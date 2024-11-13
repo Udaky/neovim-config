@@ -21,6 +21,11 @@ return {
           "gopls",
           "svelte",
           "clangd",
+          "java_language_server",
+          "jdtls",
+          "pyright",
+          "pylsp",
+          "jinja_lsp",
         },
       })
     end,
@@ -73,6 +78,7 @@ return {
           client.server_capabilities.documentFormattingProvider = true
         end,
       })
+
       -- lsp javascript
       lspconfig.ts_ls.setup({
         capabilities = lsp_capabilities,
@@ -80,6 +86,7 @@ return {
           client.server_capabilities.documentFormattingProvider = true
         end,
       })
+
       -- lsp svelte
       lspconfig.svelte.setup({
         capabilities = lsp_capabilities,
@@ -87,6 +94,7 @@ return {
           client.server_capabilities.documentFormattingProvider = true
         end,
       })
+
       -- lsp go
       lspconfig.gopls.setup({
         capabilities = lsp_capabilities,
@@ -94,8 +102,44 @@ return {
           client.server_capabilities.documentFormattingProvider = true
         end,
       })
+      
       -- lsp C/C++
       lspconfig.clangd.setup({
+        capabilities = lsp_capabilities,
+        on_attach = function(client)
+          client.server_capabilities.documentFormattingProvider = true
+        end,
+      })
+
+      -- lsp rust
+      lspconfig.rust_analyzer.setup({
+        capabilities = lsp_capabilities,
+        on_attach = function(client)
+          client.server_capabilities.documentFormattingProvider = true
+        end,
+      })
+      -- lsp Java
+      lspconfig.jdtls.setup({
+        capabilities = lsp_capabilities,
+        on_attach = function(client)
+          client.server_capabilities.documentFormattingProvider = true
+        end,
+      })
+
+      -- lsp Python
+      lspconfig.pyright.setup({
+        capabilities = lsp_capabilities,
+        on_attach = function(client)
+          client.server_capabilities.documentFormattingProvider = true
+        end,
+      })
+      lspconfig.pylsp.setup({
+        capabilities = lsp_capabilities,
+        on_attach = function(client)
+          client.server_capabilities.documentFormattingProvider = true
+        end,
+      })
+      lspconfig.jinja_lsp.setup({
         capabilities = lsp_capabilities,
         on_attach = function(client)
           client.server_capabilities.documentFormattingProvider = true
